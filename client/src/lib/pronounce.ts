@@ -8,16 +8,18 @@ const CHO = ['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','
 const JUNG = ['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
 const JONG = ['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
 
-const vowelJung: Record<string, string> = { a: 'ㅏ', e: 'ㅔ', i: 'ㅣ', o: 'ㅗ', u: 'ㅜ', wa: 'ㅘ', we: 'ㅞ', wi: 'ㅟ', wo: 'ㅝ' };
+const vowelJung: Record<string, string> = { a: 'ㅏ', e: 'ㅔ', i: 'ㅣ', o: 'ㅗ', u: 'ㅜ' };
 const vowelIot: Record<string, string> = { a: 'ㅑ', e: 'ㅖ', i: 'ㅣ', o: 'ㅛ', u: 'ㅠ' };
 const stripMap: Record<string, string> = { 'à':'a','è':'e','é':'e','ì':'i','í':'i','ò':'o','ó':'o','ù':'u','ú':'u' };
-// 본토 이탈리아어 원음에 가까운 표기를 우선한다.
-// p·t·hard c/k/q는 영어식 거센소리보다 한국어 된소리(ㅃ·ㄸ·ㄲ)에 가깝다.
-// soft c(ce/ci/cia...)는 ㅊ 계열로 둔다: c'è → 체.
+// 소리 기준 자모.
+// 이탈리아어 무성 파열음 p·t·k(c·q)와 파찰음 z([ts])·부드러운 c([tʃ])는 '무기음'이라
+// 한국어 된소리(ㅃ·ㄸ·ㄲ·ㅉ)가 실제 발음에 가장 가깝다(거센소리 ㅍ·ㅌ·ㅋ는 기식이 과함).
+// 유성음 b·d·g와 부드러운 g([dʒ]=j)는 평음(ㅂ·ㄷ·ㄱ·ㅈ) 유지.
 const consJamo: Record<string, string> = { b:'ㅂ', c:'ㄲ', d:'ㄷ', f:'ㅍ', g:'ㄱ', k:'ㄲ', l:'ㄹ', m:'ㅁ', n:'ㄴ', p:'ㅃ', q:'ㄲ', r:'ㄹ', s:'ㅅ', t:'ㄸ', v:'ㅂ', w:'ㅂ', z:'ㅉ', ch:'ㅊ', j:'ㅈ' };
 const codaCons: Record<string, string> = { n:'ㄴ', m:'ㅁ', l:'ㄹ' };
-// 겹자음은 이탈리아어 원음에서는 길게 발음되지만, 자동 한글 표기에서는 과한 받침을 만들지 않도록
-// 한국어 독음에 자연스러운 l/m/n 정도만 받침으로 남긴다.
+// 이중자음(gemination)은 앞 음절 받침으로 표현해 '길게 막는' 실제 발음을 근사한다.
+// pp/bb→ㅂ, tt/dd/ss/zz→ㅅ, cc/gg(경음)→ㄱ, cc/gg(연음 ce·ci)→ㅅ, ll→ㄹ, mm→ㅁ, nn→ㄴ.
+// f·v·r 겹자음은 한글 받침으로 옮기면 부자연스러워(예: caffè) 단순화 유지.
 const gemCoda: Record<string, string> = { l:'ㄹ', m:'ㅁ', n:'ㄴ' };
 
 const isVowel = (c: string) => 'aeiou'.includes(c);
@@ -34,7 +36,17 @@ type Token = { k: 'V'; v: string; iot: boolean } | { k: 'C'; c: string } | { k: 
 
 function tokenize(word: string): string[] | Token[] {
   let s = word.toLowerCase().split('').map((c) => stripMap[c] || c).join('');
+  // 모음생략(elision)의 아포스트로피는 제거: 앞 자음이 뒤 모음과 결합한다.
+  // 예) c'è→cè(체), dov'è→dovè(도베), l'amico→lamico(라미코). c'·g' + e/i는 자연히 연음(ㅊ/ㅈ)으로 처리됨.
+  s = s.replace(/['’`]/g, '');
   s = s.replace(/cq/g, 'cc'); // acqua [akkwa] → cc(경음 ㄱ받침)로 처리
+  // w는 이탈리아어에 없는 외래어 글자(weekend·web·wifi 등)이며 영어 반모음 [w]로 발음된다.
+  // 뒤 모음과 합쳐 단모음화한다: wee/wi→ui(위), we→ue(웨), 그 외(wa·wo·wu)는 u 반모음.
+  s = s.replace(/wh/g, 'w');     // wh(영어)는 [w]로: whisky → wisky
+  s = s.replace(/wee/g, 'ui');   // weekend [wiːk-] → 위켄드
+  s = s.replace(/wi/g, 'ui');    // wifi → 위피
+  s = s.replace(/we/g, 'ue');    // web [web] → 웨브
+  s = s.replace(/w/g, 'u');      // 그 외(wa·wo·wu)는 u 반모음으로
   s = s.replace(/([fvr])\1+/g, '$1'); // f·v·r 겹자음은 한글 받침이 부자연 → 단순화(caffè→까페, carro→카로)
   const t: Token[] = [];
   let i = 0;
@@ -46,15 +58,15 @@ function tokenize(word: string): string[] | Token[] {
     if (c === n && consJamo[c] !== undefined) { i++; continue; } // pp/tt/zz 등은 두 번째 자음만 읽어 과한 받침을 피함
     switch (c) {
       case 'c':
-        if (n === 'c') { i++; break; } // cc 장음은 자동 표기에서는 과한 받침 없이 두 번째 c만 발음
-        if (n === 'h') { t.push({ k: 'C', c: 'k' }); i += 2; }          // ch → k (che/chi)
+        if (n === 'c') { const a = s[i + 2]; t.push({ k: 'CD', j: (a === 'e' || a === 'i') ? 'ㅅ' : 'ㄱ' }); i++; break; } // cc 장음화(연음 ㅅ/경음 ㄱ)
+        if (n === 'h') { t.push({ k: 'C', c: 'k' }); i += 2; }          // ch → 경음 k (che/chi)
         else if (n === 'i' && isVowel(n2)) { t.push({ k: 'C', c: 'ch' }); i += 2; } // cia/cio/ciu → ㅊ+모음(i 묵음)
         else if (n === 'e' || n === 'i') { t.push({ k: 'C', c: 'ch' }); i++; }       // ce/ci → ㅊ
-        else { t.push({ k: 'C', c: 'c' }); i++; }                        // 그 외 → k
+        else { t.push({ k: 'C', c: 'c' }); i++; }                        // 그 외 → 경음 k
         break;
       case 'g':
-        if (n === 'g') { i++; break; } // gg 장음도 두 번째 g 기준으로 자연스럽게 표기
-        if (n === 'h') { t.push({ k: 'C', c: 'g' }); i += 2; }           // gh → hard g
+        if (n === 'g') { const a = s[i + 2]; t.push({ k: 'CD', j: (a === 'e' || a === 'i') ? 'ㅅ' : 'ㄱ' }); i++; break; } // gg 장음화(연음 ㅅ/경음 ㄱ)
+        if (n === 'h') { t.push({ k: 'C', c: 'g' }); i += 2; }           // gh → 경음 g
         else if (n === 'l' && n2 === 'i') { t.push({ k: 'C', c: 'l' }); i += 2; } // gli → 구개 ʎ ≈ ㄹ(+이)
         else if (n === 'n' && isVowel(n2)) { t.push({ k: 'C', c: 'n' }); t.push({ k: 'V', v: n2, iot: true }); i += 3; } // gn+모음 → ɲ ≈ 냐/뇨
         else if (n === 'n') { t.push({ k: 'C', c: 'n' }); i += 2; }
@@ -65,19 +77,12 @@ function tokenize(word: string): string[] | Token[] {
       case 's':
         if (n === 'c' && n2 === 'h') { t.push({ k: 'C', c: 's' }); t.push({ k: 'C', c: 'k' }); i += 3; } // sch → s+k
         else if (n === 'c' && s[i + 2] === 'i' && isVowel(s[i + 3])) { t.push({ k: 'C', c: 's' }); i += 3; t.push({ k: 'V', v: s[i], iot: true }); i++; } // scia/scio → ʃ+모음
-        else if (n === 'c' && s[i + 2] === 'e') { t.push({ k: 'C', c: 's' }); t.push({ k: 'V', v: 'e', iot: true }); i += 3; } // sce → 셰
-        else if (n === 'c' && s[i + 2] === 'i') { t.push({ k: 'C', c: 's' }); i += 2; } // sci → 시
+        else if (n === 'c' && (s[i + 2] === 'e' || s[i + 2] === 'i')) { t.push({ k: 'C', c: 's' }); i += 2; } // sce/sci → ʃ ≈ ㅅ(시/세)
         else { t.push({ k: 'C', c: 's' }); i++; }
         break;
       case 'h': i++; break;                                             // 항상 묵음
       case 'q':
-        if (n === 'u' && isVowel(n2)) {
-          t.push({ k: 'C', c: 'q' });
-          t.push({ k: 'V', v: `w${n2}`, iot: false });
-          i += 3;
-        } else {
-          t.push({ k: 'C', c: 'q' }); i++;
-        }
+        t.push({ k: 'C', c: 'q' }); i++;                                // qu+모음: u를 일반 모음으로 (qua→쿠아)
         break;
       case 'x': t.push({ k: 'X' }); i++; break;
       case 'y': if (isVowel(n)) { t.push({ k: 'V', v: n, iot: true }); i += 2; } else { t.push({ k: 'V', v: 'i', iot: false }); i++; } break;
@@ -128,13 +133,15 @@ function assemble(tokens: Token[]): string {
 }
 
 function toHangul(w: string): string {
-  return assemble(tokenize(w.replace(/[’']/g, '')) as Token[]);
+  return assemble(tokenize(w) as Token[]);
 }
 
 /** 이탈리아어 문장을 한글 발음 근사치로 변환합니다. 구두점·공백은 보존됩니다. */
 export function itToHangul(text: string): string {
   if (!text) return '';
-  return text.replace(/[A-Za-zÀàÈèÉéÌìÍíÒòÓóÙùÚú]+(?:[’'][A-Za-zÀàÈèÉéÌìÍíÒòÓóÙùÚú]*)*/g, (m) => toHangul(m));
+  // 아포스트로피(elision)를 단어 내부 문자로 포함해 c'è·dov'è·l'amico를 한 단어로 처리한다.
+  // 단어 양끝의 아포스트로피(따옴표로 쓰인 경우)는 매칭에서 제외하기 위해 안쪽에만 허용.
+  return text.replace(/[A-Za-zÀàÈèÉéÌìÍíÒòÓóÙùÚú]+(?:['’`][A-Za-zÀàÈèÉéÌìÍíÒòÓóÙùÚú]+)*/g, (m) => toHangul(m));
 }
 
 /** 기존 코드 호환용 별칭 */

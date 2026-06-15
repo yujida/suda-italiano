@@ -164,7 +164,7 @@ export const topicCards: TopicCard[] = [
     },
     expressions: [
       { word: 'fa caldo / fa freddo', reading: '파 깔도 / 파 프렛도', meaning: '덥다 / 춥다', example: 'Oggi fa molto caldo.', translation: '오늘 아주 더워.' },
-      { word: 'c\'è il sole', reading: '끄\'에 일 솔레', meaning: '해가 난다', example: 'C\'è il sole.', translation: '해가 났어.' },
+      { word: 'c\'è il sole', reading: '쩨 일 솔레', meaning: '해가 난다', example: 'C\'è il sole.', translation: '해가 났어.' },
       { word: 'piove', reading: '삐오베', meaning: '비가 온다', example: 'Piove tutto il giorno.', translation: '하루 종일 비가 와.' },
       { word: 'la stagione', reading: '라 스따조네', meaning: '계절', example: 'La mia stagione preferita è l\'autunno.', translation: '내가 좋아하는 계절은 가을이야.' },
       { word: 'che tempo fa?', reading: '께 뗌뽀 파?', meaning: '날씨 어때?', example: 'Che tempo fa a Roma?', translation: '로마 날씨 어때?' },
@@ -746,7 +746,7 @@ export const topicCards: TopicCard[] = [
       roleB: '길을 알려주는 사람',
     },
     expressions: [
-      { word: 'dov\'è', reading: '도브\'에', meaning: '~는 어디예요?', example: 'Dov\'è la stazione?', translation: '역이 어디예요?' },
+      { word: 'dov\'è', reading: '도베', meaning: '~는 어디예요?', example: 'Dov\'è la stazione?', translation: '역이 어디예요?' },
       { word: 'sempre dritto', reading: '셈쁘레 드릿또', meaning: '쭉 직진', example: 'Vada sempre dritto.', translation: '쭉 직진하세요.' },
       { word: 'a destra', reading: '아 데스뜨라', meaning: '오른쪽으로', example: 'Giri a destra.', translation: '오른쪽으로 도세요.' },
       { word: 'lontano', reading: '론따노', meaning: '먼', example: 'È lontano?', translation: '멀어요?' },
@@ -1118,7 +1118,7 @@ export const topicCards: TopicCard[] = [
     },
     expressions: [
       { word: 'lavoro', reading: '라보로', meaning: '일/직업', example: 'Che lavoro fai?', translation: '무슨 일 해?' },
-      { word: 'fare l\'insegnante', reading: '파레 르\'인세냔떼', meaning: '교사로 일하다', example: 'Faccio l\'insegnante.', translation: '나는 교사예요.' },
+      { word: 'fare l\'insegnante', reading: '파레 린세냔떼', meaning: '교사로 일하다', example: 'Faccio l\'insegnante.', translation: '나는 교사예요.' },
       { word: 'ufficio', reading: '우피쪼', meaning: '사무실', example: 'Lavoro in ufficio.', translation: '나는 사무실에서 일해.' },
       { word: 'collega', reading: '꼴레가', meaning: '동료', example: 'Il mio collega è simpatico.', translation: '내 동료는 친절해.' },
       { word: 'impegnato', reading: '임뻬냐또', meaning: '바쁜', example: 'Oggi sono molto impegnato.', translation: '오늘 아주 바빠.' },
@@ -3290,7 +3290,7 @@ export const topicCards: TopicCard[] = [
       roleB: '매표소 직원',
     },
     expressions: [
-      { word: 'biglietto d\'ingresso', reading: '빌리엣또 드\'인그렛소', meaning: '입장권', example: 'Due biglietti d\'ingresso.', translation: '입장권 두 장이요.' },
+      { word: 'biglietto d\'ingresso', reading: '빌리엣또 딘그렛소', meaning: '입장권', example: 'Due biglietti d\'ingresso.', translation: '입장권 두 장이요.' },
       { word: 'ridotto', reading: '리돗또', meaning: '할인(요금)', example: 'C\'è il ridotto per studenti?', translation: '학생 할인 있어요?' },
       { word: 'mostra', reading: '모스뜨라', meaning: '전시', example: 'C\'è una mostra speciale.', translation: '특별 전시가 있어요.' },
       { word: 'chiude', reading: '끼우데', meaning: '닫는다', example: 'A che ora chiude?', translation: '몇 시에 닫아요?' },
@@ -3396,7 +3396,7 @@ export const topicCards: TopicCard[] = [
       roleB: '점원',
     },
     expressions: [
-      { word: 'biglietto dell\'autobus', reading: '빌리엣또 델르\'아우또부스', meaning: '버스표', example: 'Due biglietti dell\'autobus.', translation: '버스표 두 장이요.' },
+      { word: 'biglietto dell\'autobus', reading: '빌리엣또 델라우또부스', meaning: '버스표', example: 'Due biglietti dell\'autobus.', translation: '버스표 두 장이요.' },
       { word: 'francobollo', reading: '프란꼬볼로', meaning: '우표', example: 'Un francobollo, grazie.', translation: '우표 한 장이요.' },
       { word: 'ricarica', reading: '리까리까', meaning: '충전(휴대폰)', example: 'Una ricarica da dieci euro.', translation: '10유로 충전이요.' },
       { word: 'avete', reading: '아베떼', meaning: '~있어요? (가게)', example: 'Avete i biglietti?', translation: '표 있어요?' },
@@ -3718,7 +3718,7 @@ export const topicCards: TopicCard[] = [
       { word: 'sono stato a', reading: '소노 스따또 아', meaning: '~에 가봤다', example: 'Sono stato a Roma.', translation: '로마에 가봤어.' },
       { word: 'visitare', reading: '비시따레', meaning: '방문하다/구경하다', example: 'Ho visitato il museo.', translation: '박물관을 구경했어.' },
       { word: 'partire', reading: '빠르띠레', meaning: '떠나다', example: 'Parto domani.', translation: '내일 떠나.' },
-      { word: 'all\'estero', reading: '알르\'에스떼로', meaning: '해외에서', example: 'Vado all\'estero.', translation: '해외에 가.' },
+      { word: 'all\'estero', reading: '알레스떼로', meaning: '해외에서', example: 'Vado all\'estero.', translation: '해외에 가.' },
     ],
     dialogue: [
       { speaker: 'A', text: 'Dove sei andato in vacanza?', translation: '휴가 어디 갔다 왔어?' },
@@ -4141,7 +4141,7 @@ export const topicCards: TopicCard[] = [
       { word: 'genitori', reading: '제니또리', meaning: '부모님', example: 'Vivo con i miei genitori.', translation: '부모님과 살아.' },
       { word: 'fratello', reading: '프라뗄로', meaning: '형제', example: 'Ho un fratello.', translation: '형제가 한 명 있어.' },
       { word: 'legato', reading: '레가또', meaning: '친밀한/가까운', example: 'Sono legato a mia nonna.', translation: '할머니와 가까워.' },
-      { word: 'andare d\'accordo', reading: '안다레 드\'악꼬르도', meaning: '사이좋게 지내다', example: 'Vado d\'accordo con loro.', translation: '그들과 잘 지내.' },
+      { word: 'andare d\'accordo', reading: '안다레 닥꼬르도', meaning: '사이좋게 지내다', example: 'Vado d\'accordo con loro.', translation: '그들과 잘 지내.' },
       { word: 'voler bene', reading: '볼레르 베네', meaning: '아끼다/사랑하다', example: 'Voglio bene alla mia famiglia.', translation: '가족을 사랑해.' },
     ],
     dialogue: [
@@ -4460,7 +4460,7 @@ export const topicCards: TopicCard[] = [
       { word: 'quartiere', reading: '꾸아르띠에레', meaning: '동네', example: 'Il mio quartiere è tranquillo.', translation: '우리 동네는 조용해.' },
       { word: 'vicino a', reading: '비찌노 아', meaning: '~근처에', example: 'Abito vicino al parco.', translation: '공원 근처에 살아.' },
       { word: 'comodo', reading: '꼬모도', meaning: '편리한', example: 'È molto comodo.', translation: '아주 편리해.' },
-      { word: 'c\'è di tutto', reading: '끄\'에 디 뚯또', meaning: '다 있다', example: 'Qui c\'è di tutto.', translation: '여기엔 다 있어.' },
+      { word: 'c\'è di tutto', reading: '쩨 디 뚯또', meaning: '다 있다', example: 'Qui c\'è di tutto.', translation: '여기엔 다 있어.' },
     ],
     dialogue: [
       { speaker: 'A', text: 'Com\'è la tua città?', translation: '너희 도시는 어때?' },
@@ -5251,7 +5251,7 @@ export const topicCards: TopicCard[] = [
       roleB: '상상해서 답하는 사람',
     },
     expressions: [
-      { word: 'un\'altra vita', reading: '운\'알뜨라 비따', meaning: '다른 삶', example: 'Vorrei un\'altra vita?', translation: '다른 삶을 원할까?' },
+      { word: 'un\'altra vita', reading: '우날뜨라 비따', meaning: '다른 삶', example: 'Vorrei un\'altra vita?', translation: '다른 삶을 원할까?' },
       { word: 'se potessi', reading: '세 뽀뗏시', meaning: '(내가) 할 수 있다면', example: 'Se potessi, cambierei tutto.', translation: '할 수 있다면 다 바꿀래.' },
       { word: 'sarebbe', reading: '사렙베', meaning: '~일 텐데', example: 'Sarebbe bello.', translation: '멋질 텐데.' },
       { word: 'ricominciare', reading: '리꼬민짜레', meaning: '다시 시작하다', example: 'Vorrei ricominciare.', translation: '다시 시작하고 싶어.' },
@@ -5782,7 +5782,7 @@ export const topicCards: TopicCard[] = [
     },
     expressions: [
       { word: 'meta', reading: '메따', meaning: '여행지/목적지', example: 'È una meta di moda.', translation: '유행하는 여행지야.' },
-      { word: 'low cost', reading: '로브 꼬스뜨', meaning: '저가의', example: 'Un volo low cost.', translation: '저가 항공이야.' },
+      { word: 'low cost', reading: '로우 꼬스뜨', meaning: '저가의', example: 'Un volo low cost.', translation: '저가 항공이야.' },
       { word: 'prenotare', reading: '쁘레노따레', meaning: '예약하다', example: 'Ho prenotato l\'hotel.', translation: '호텔 예약했어.' },
       { word: 'zaino in spalla', reading: '짜이노 인 스빨라', meaning: '배낭여행', example: 'Viaggio zaino in spalla.', translation: '배낭여행을 해.' },
       { word: 'esperienza', reading: '에스뻬리엔짜', meaning: '경험', example: 'Cerco esperienze vere.', translation: '진짜 경험을 찾아.' },
@@ -6412,7 +6412,7 @@ export const topicCards: TopicCard[] = [
       ],
       roleplay: { situation: '팀장과 직원이 재택근무 정책에 대해 이야기하는 상황입니다.', roleA: '직원: 주 2회 재택근무를 할 수 있을까요? 집중이 더 잘 돼서요.', roleB: '팀장: 생각해볼게요. 하지만 팀 회의는 꼭 출근해야 해요.' },
       expressions: [
-        { word: 'smart working', reading: '스마르뜨 보르낀그', meaning: '재택근무', example: 'Faccio smart working tre giorni a settimana.', translation: '주 3일 재택근무를 해요.' },
+        { word: 'smart working', reading: '스마르뜨 우오르낀그', meaning: '재택근무', example: 'Faccio smart working tre giorni a settimana.', translation: '주 3일 재택근무를 해요.' },
         { word: 'da remoto', reading: '다 레모또', meaning: '원격으로', example: 'Lavoro da remoto da due anni.', translation: '2년째 원격으로 일해요.' },
         { word: 'riunione', reading: '리우니오네', meaning: '회의', example: 'Ho una riunione online alle dieci.', translation: '10시에 온라인 회의가 있어요.' },
         { word: 'produttività', reading: '쁘로둣띠비따', meaning: '생산성', example: 'La mia produttività è aumentata a casa.', translation: '집에서 생산성이 올랐어요.' },
@@ -6945,7 +6945,7 @@ export const topicCards: TopicCard[] = [
         { word: 'mi dispiace', reading: '미 디스삐아쩨', meaning: '죄송해요/미안해요', example: 'Mi dispiace, non posso venire.', translation: '죄송해요, 갈 수 없어요.' },
         { word: 'purtroppo', reading: '뿌르뜨롭뽀', meaning: '아쉽게도/유감스럽게도', example: 'Purtroppo ho già un impegno.', translation: '아쉽게도 이미 선약이 있어요.' },
         { word: 'impegno', reading: '임뻬뇨', meaning: '약속/선약', example: 'Ho un impegno quel giorno.', translation: '그날 약속이 있어요.' },
-        { word: 'un\'altra volta', reading: '운\'알뜨라 볼따', meaning: '다른 때에', example: 'Magari un\'altra volta!', translation: '다른 때에 하자요!' },
+        { word: 'un\'altra volta', reading: '우날뜨라 볼따', meaning: '다른 때에', example: 'Magari un\'altra volta!', translation: '다른 때에 하자요!' },
       ],
       dialogue: [
         { speaker: 'A', text: 'Potresti aiutarmi a traslocare sabato prossimo?', translation: '다음 주 토요일에 이사 도와줄 수 있어?' },
@@ -9100,7 +9100,7 @@ export const topicCards: TopicCard[] = [
       ],
       roleplay: { situation: '친구가 소셜미디어에서 본 의심스러운 뉴스를 공유하려는 상황입니다.', roleA: '친구 A: 이거 봤어? 엄청난 뉴스야. 당장 공유해야 할 것 같아.', roleB: '친구 B: 잠깐, 출처가 뭐야? 공유하기 전에 확인부터 하자.' },
       expressions: [
-        { word: 'fake news', reading: '파께 네브스', meaning: '가짜 뉴스', example: 'Le fake news si diffondono velocemente online.', translation: '가짜 뉴스는 온라인에서 빠르게 퍼져요.' },
+        { word: 'fake news', reading: '파께 네우스', meaning: '가짜 뉴스', example: 'Le fake news si diffondono velocemente online.', translation: '가짜 뉴스는 온라인에서 빠르게 퍼져요.' },
         { word: 'fonte', reading: '폰떼', meaning: '출처/원천', example: 'Controlla sempre la fonte prima di condividere.', translation: '공유하기 전에 항상 출처를 확인해요.' },
         { word: 'verificare', reading: '베리피까레', meaning: '확인하다', example: 'È importante verificare le informazioni.', translation: '정보를 확인하는 것이 중요해요.' },
         { word: 'disinformazione', reading: '디신포르마찌오네', meaning: '허위정보', example: 'La disinformazione è un problema serio.', translation: '허위정보는 심각한 문제예요.' },

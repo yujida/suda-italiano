@@ -1,6 +1,6 @@
 # 배포 가이드 (GitHub + Vercel)
 
-수다이탈리아노를 GitHub에 올리고 Vercel로 배포하는 절차입니다.
+수다에스파뇰을 GitHub에 올리고 Vercel로 배포하는 절차입니다.
 이 프로젝트는 **서버가 필요 없는 정적 SPA**라서, 빌드 결과물(`dist/public`)만 정적 호스팅하면 됩니다.
 
 ---
@@ -34,7 +34,7 @@ pnpm dev       # http://localhost:3000 에서 미리보기 (선택)
 ```bash
 git init
 git add .
-git commit -m "Initial commit: 수다이탈리아노"
+git commit -m "Initial commit: 수다에스파뇰"
 ```
 
 > `.gitignore`에 `node_modules`와 `dist`가 이미 제외되어 있어, 소스코드만 커밋됩니다.
@@ -44,7 +44,7 @@ git commit -m "Initial commit: 수다이탈리아노"
 ## 3. GitHub에 올리기
 
 1. GitHub에서 **새 저장소(New repository)**를 만듭니다.
-   - 이름 예: `suda-italiano`
+   - 이름 예: `suda-espanol`
    - **README/.gitignore/license는 추가하지 마세요** (이미 로컬에 있으므로 충돌 방지).
 2. 만들면 나오는 저장소 주소를 복사해 아래에 넣습니다.
 
@@ -64,7 +64,7 @@ git push -u origin main
 ## 4. Vercel로 배포
 
 1. https://vercel.com 로그인 → **Add New… → Project**.
-2. **Import Git Repository**에서 방금 올린 `suda-italiano` 저장소를 선택(Import).
+2. **Import Git Repository**에서 방금 올린 `suda-espanol` 저장소를 선택(Import).
 3. 빌드 설정은 저장소의 `vercel.json`에서 자동 적용됩니다. 값이 비어 보이면 아래로 직접 채우세요:
    - **Framework Preset**: Other
    - **Build Command**: `pnpm build`

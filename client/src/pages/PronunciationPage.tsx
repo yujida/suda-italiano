@@ -9,7 +9,7 @@ const BRAND = "oklch(0.40 0.16 150)";
 const ACCENT = "oklch(0.49 0.15 64)";
 
 const vowels = [
-  { letter: "a", sound: "아", example: "casa", reading: "까사", meaning: "집" },
+  { letter: "a", sound: "아", example: "casa", reading: "카사", meaning: "집" },
   { letter: "e", sound: "에", example: "bene", reading: "베네", meaning: "잘, 좋게" },
   { letter: "i", sound: "이", example: "vino", reading: "비노", meaning: "와인" },
   { letter: "o", sound: "오", example: "sole", reading: "솔레", meaning: "해" },
@@ -17,23 +17,23 @@ const vowels = [
 ];
 
 const consonants = [
-  { letter: "c", rule: "a·o·u 앞 = ㄲ / e·i 앞 = ㅊ", example: "casa · cena", reading: "까사 · 체나" },
-  { letter: "ch", rule: "e·i 앞에서도 ㄲ로 (거센 ㅋ보다 된소리에 가까움)", example: "chi · perché", reading: "끼 · 뻬르께" },
-  { letter: "g", rule: "a·o·u 앞 = ㄱ / e·i 앞 = ㅈ", example: "gatto · gelato", reading: "가또 · 젤라또" },
-  { letter: "gh", rule: "e·i 앞에서도 ㄱ로 유지", example: "spaghetti", reading: "스빠게띠" },
-  { letter: "gn", rule: "'냐·뇨'처럼 부드러운 ㄴ 소리", example: "gnocchi · signore", reading: "뇨끼 · 시뇨레" },
+  { letter: "c", rule: "a·o·u 앞 = ㅋ / e·i 앞 = ㅊ", example: "casa · cena", reading: "카사 · 체나" },
+  { letter: "ch", rule: "e·i 앞에서도 ㅋ로 (경음 유지)", example: "chi · perché", reading: "키 · 페르케" },
+  { letter: "g", rule: "a·o·u 앞 = ㄱ / e·i 앞 = ㅈ", example: "gatto · gelato", reading: "가토 · 젤라토" },
+  { letter: "gh", rule: "e·i 앞에서도 ㄱ로 (경음 유지)", example: "spaghetti", reading: "스파게티" },
+  { letter: "gn", rule: "'냐·뇨'처럼 부드러운 ㄴ 소리", example: "gnocchi · signore", reading: "뇨키 · 시뇨레" },
   { letter: "gli", rule: "'리'처럼 부드럽게 굴리는 ㄹ", example: "famiglia · figlio", reading: "파밀리아 · 필리오" },
   { letter: "h", rule: "항상 묵음 (소리가 없음)", example: "ho · hotel", reading: "오 · 오텔" },
-  { letter: "z", rule: "ㅉ 또는 ㅈ (ts/dz). 영어 z 아님", example: "pizza · zero", reading: "삐짜 · 쩨로" },
-  { letter: "s", rule: "보통 ㅅ, 모음 사이에선 약한 ㅈ", example: "sole · casa", reading: "솔레 · 까사" },
-  { letter: "sc", rule: "e·i 앞 = ㅅ(시/셰) / 그 외 = ㅅㄲ", example: "scena · scuola", reading: "셰나 · 스꾸올라" },
+  { letter: "z", rule: "ㅊ 또는 ㅈ (ts/dz). 영어 z 아님", example: "pizza · zero", reading: "피차 · 체로" },
+  { letter: "s", rule: "보통 ㅅ, 모음 사이에선 약한 ㅈ", example: "sole · casa", reading: "솔레 · 카사" },
+  { letter: "sc", rule: "e·i 앞 = ㅅ(시) / 그 외 = ㅅㅋ", example: "scena · scuola", reading: "셰나 · 스쿠올라" },
   { letter: "r", rule: "혀를 가볍게 굴리는 ㄹ", example: "Roma · caro", reading: "로마 · 카로" },
-  { letter: "qu", rule: "ㄲ+w 모음 (꽈·꿰·뀌)", example: "quattro · qui", reading: "꽈뜨로 · 뀌" },
+  { letter: "qu", rule: "ㅋ+우 (콰·퀘). u도 함께 발음", example: "quattro · qui", reading: "쿠아트로 · 쿠이" },
 ];
 
 const digraphs = [
-  { letter: "ch · gh", sound: "ㄲ · ㄱ", example: "chi · ghiaccio", reading: "끼 · 기아쪼", meaning: "누구 · 얼음" },
-  { letter: "gn", sound: "ㄴ(냐뇨)", example: "gnocchi", reading: "뇨끼", meaning: "뇨키" },
+  { letter: "ch · gh", sound: "ㅋ · ㄱ", example: "chi · ghiaccio", reading: "키 · 기아초", meaning: "누구 · 얼음" },
+  { letter: "gn", sound: "ㄴ(냐뇨)", example: "gnocchi", reading: "뇨키", meaning: "뇨키" },
   { letter: "gli", sound: "ㄹ(리)", example: "aglio", reading: "알리오", meaning: "마늘" },
   { letter: "sc(e·i)", sound: "ㅅ(시)", example: "pesce", reading: "페셰", meaning: "생선" },
 ];
